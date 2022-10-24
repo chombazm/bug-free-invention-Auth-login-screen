@@ -36,7 +36,11 @@ const MainTab = createNativeStackNavigator<MainTabParamList>();
 
 function MainTabNavigator() {
   return (
-    <MainTab.Navigator initialRouteName="Login">
+    <MainTab.Navigator
+      initialRouteName="Landing"
+      screenOptions={{
+        headerShown: false,
+      }}>
       <MainTab.Screen name="Landing" component={LandingScreen} />
       <MainTab.Screen name="Login" component={LoginScreen} />
       <MainTab.Screen name="Register" component={RegisterScreen} />
