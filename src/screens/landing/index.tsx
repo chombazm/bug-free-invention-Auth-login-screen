@@ -14,7 +14,7 @@ import { styles } from './styles';
 
 const heroLandingImg = require('../../../assets/images/landing.png');
 
-type routeNameProps = {
+type RouteNameProps = {
   Login: undefined;
   Register: undefined;
   Dashboad: undefined;
@@ -22,7 +22,7 @@ type routeNameProps = {
 export const LandingScreen = () => {
   const navigate = useNavigation();
 
-  const routeTo = (props: routeNameProps) => {
+  const routeTo = (props: RouteNameProps) => {
     // console.log(props, 'check props');
     navigate.navigate(props);
   };
@@ -56,7 +56,7 @@ export const LandingScreen = () => {
         </View>
 
         <View>
-          <Pressable onPress={() => routeTo('Dashboard')}>
+          <Pressable onPress={() => {}}>
             <Text style={{ color: colors.primary }}>Skip {'>>'}</Text>
           </Pressable>
         </View>
