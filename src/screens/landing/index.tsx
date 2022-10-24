@@ -8,14 +8,24 @@ import {
   Image,
   SafeAreaView,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { colors } from '../../../assets/constants';
 import { styles } from './styles';
 
 const heroLandingImg = require('../../../assets/images/landing.png');
 
+type routeNameProps = {
+  Login: undefined;
+  Register: undefined;
+  Dashboad: undefined;
+};
 export const LandingScreen = () => {
-  // const navigate = useNavigation();
+  const navigate = useNavigation();
 
+  const routeTo = (props: routeNameProps) => {
+    // console.log(props, 'check props');
+    navigate.navigate(props);
+  };
   return (
     <ScrollView>
       <SafeAreaView style={styles.container}>
@@ -32,10 +42,12 @@ export const LandingScreen = () => {
 
         <View style={styles.buttonContainer}>
           <Pressable
+            onPress={() => routeTo('Login')}
             style={[styles.button, { backgroundColor: colors.primary }]}>
             <Text style={styles.buttonText}>Sign in</Text>
           </Pressable>
           <Pressable
+            onPress={() => routeTo('Register')}
             style={[styles.button, { backgroundColor: colors.lightBg }]}>
             <Text style={[styles.buttonText, { color: colors.primary }]}>
               Register
@@ -44,7 +56,7 @@ export const LandingScreen = () => {
         </View>
 
         <View>
-          <Pressable>
+          <Pressable onPress={() => routeTo('Dashboard')}>
             <Text style={{ color: colors.primary }}>Skip {'>>'}</Text>
           </Pressable>
         </View>
