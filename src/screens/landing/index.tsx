@@ -1,9 +1,9 @@
-import { useNavigation } from '@react-navigation/native';
+// import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { View, Text, ScrollView, Pressable } from 'react-native';
 import { styles } from './styles';
 export const LandingScreen = () => {
-  const navigate = useNavigation();
+  // const navigate = useNavigation();
 
   return (
     <ScrollView>
@@ -16,7 +16,7 @@ export const LandingScreen = () => {
       </View>
 
       <View>
-        <Pressable onPress={() => navigate.navigate('Login')}>
+        <Pressable onPress={() => {}}>
           <Text>Register</Text>
         </Pressable>
       </View>
