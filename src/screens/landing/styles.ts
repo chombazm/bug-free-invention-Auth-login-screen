@@ -15,15 +15,6 @@ export const styles = StyleSheet.create({
     minHeight: deviceHeight,
     // paddingHorizontal: 20,
   },
-  topHeaderBar: {
-    width: '100%',
-    padding: 20,
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-    fontWeight: 'bold',
-    // backgroundColor: 'blue',
-  },
   imageContainer: {
     width: '100%',
     position: 'relative',

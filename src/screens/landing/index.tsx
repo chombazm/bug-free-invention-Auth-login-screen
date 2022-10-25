@@ -11,6 +11,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { colors } from '../../../assets/constants';
 import { styles } from './styles';
+import { LanguageSelect } from '../../components/LanguageSelect';
 
 const heroLandingImg = require('../../../assets/images/landing.png');
 
@@ -29,9 +30,7 @@ export const LandingScreen = () => {
   return (
     <ScrollView>
       <SafeAreaView style={styles.container}>
-        <View style={styles.topHeaderBar}>
-          <Text>English</Text>
-        </View>
+        <LanguageSelect />
 
         <View style={styles.imageContainer}>
           <View style={styles.imageWrapper}>
