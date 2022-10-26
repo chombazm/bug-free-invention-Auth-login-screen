@@ -8,6 +8,7 @@ import { LandingScreen } from '../src/screens/landing';
 import { NotFoundScreen } from '../src/screens/notFound';
 
 import { RootStackParamList, MainTabParamList } from '../types';
+import { HomeScreen } from '../src/screens/Home';
 
 export const Navigation = () => {
   return (
@@ -44,6 +45,7 @@ function MainTabNavigator() {
       <MainTab.Screen name="Landing" component={LandingScreen} />
       <MainTab.Screen name="Login" component={LoginScreen} />
       <MainTab.Screen name="Register" component={RegisterScreen} />
+      <MainTab.Screen name="Home" component={HomeScreen} />
     </MainTab.Navigator>
   );
 }

@@ -11,4 +11,5 @@ export type MainTabParamList = {
   Landing: undefined;
   Login: undefined;
   Register: undefined;
+  Home: undefined;
 };
