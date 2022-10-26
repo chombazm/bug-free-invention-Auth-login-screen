@@ -45,7 +45,6 @@ export const LoginScreen = ({ navigation }: Props) => {
             setLoading(true);
             handleSubmit();
           } else {
-            console.log('invalid entry');
           }
         }}
         loading={loading}
