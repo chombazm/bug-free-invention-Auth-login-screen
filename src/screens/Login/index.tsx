@@ -1,3 +1,4 @@
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
 import {
   View,
@@ -7,10 +8,15 @@ import {
   Pressable,
   SafeAreaView,
 } from 'react-native';
+import { AppleIcon, Facebook, GoogleIcon } from '../../../assets/icons';
+import { MainTabParamList } from '../../../types';
 import { LanguageSelect } from '../../components/LanguageSelect';
 import { SectionDivider } from '../../components/SectionDivider';
 import { styles } from './styles';
-export const LoginScreen = () => {
+
+type Props = NativeStackScreenProps<MainTabParamList>;
+
+export const LoginScreen = ({ navigation }: Props) => {
   return (
     <ScrollView>
       <SafeAreaView style={styles.container}>
@@ -45,20 +51,26 @@ export const LoginScreen = () => {
           <View style={styles.socialLoginContainer}>
             <View style={styles.socialLoginButtonContainer}>
               <Pressable style={styles.socialLoginButton}>
-                <Text style={styles.socialLoginButtonIcon}>Facebook</Text>
+                <View>
+                  <Facebook />
+                </View>
               </Pressable>
               <Pressable style={styles.socialLoginButton}>
-                <Text style={styles.socialLoginButtonIcon}>Apple</Text>
+                <Text style={styles.socialLoginButtonIcon}>
+                  <AppleIcon />
+                </Text>
               </Pressable>
               <Pressable style={styles.socialLoginButton}>
-                <Text style={styles.socialLoginButtonIcon}>Google</Text>
+                <GoogleIcon />
               </Pressable>
             </View>
           </View>
 
           <View style={styles.formFooter}>
             <Text style={styles.formFooterText}>Don't have an account? </Text>
-            <Text style={styles.formFooterLink}>Register</Text>
+            <Pressable onPress={() => navigation.navigate('Register')}>
+              <Text style={styles.formFooterLink}>Register</Text>
+            </Pressable>
           </View>
         </View>
       </SafeAreaView>

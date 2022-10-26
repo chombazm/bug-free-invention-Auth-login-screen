@@ -8,25 +8,15 @@ import {
   Image,
   SafeAreaView,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import { colors } from '../../../assets/constants';
 import { styles } from './styles';
 import { LanguageSelect } from '../../components/LanguageSelect';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { MainTabParamList } from '../../../types';
 
 const heroLandingImg = require('../../../assets/images/landing.png');
-
-type RouteNameProps = {
-  Login: undefined;
-  Register: undefined;
-  Dashboad: undefined;
-};
-export const LandingScreen = () => {
-  const navigate = useNavigation();
-
-  const routeTo = (props: RouteNameProps) => {
-    // console.log(props, 'check props');
-    navigate.navigate(props);
-  };
+type Props = NativeStackScreenProps<MainTabParamList>;
+export const LandingScreen = ({ navigation }: Props) => {
   return (
     <ScrollView>
       <SafeAreaView style={styles.container}>
@@ -41,12 +31,12 @@ export const LandingScreen = () => {
 
         <View style={styles.buttonContainer}>
           <Pressable
-            onPress={() => routeTo('Login')}
+            onPress={() => navigation.navigate('Login')}
             style={[styles.button, { backgroundColor: colors.primary }]}>
             <Text style={styles.buttonText}>Sign in</Text>
           </Pressable>
           <Pressable
-            onPress={() => routeTo('Register')}
+            onPress={() => navigation.navigate('Register')}
             style={[styles.button, { backgroundColor: colors.lightBg }]}>
             <Text style={[styles.buttonText, { color: colors.primary }]}>
               Register

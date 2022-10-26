@@ -22,17 +22,20 @@ export const styles = StyleSheet.create({
     // marginBottom: 20,
   },
   formSubHeader: {
-    fontSize: 16,
-    fontWeight: 'bold',
+    fontSize: 14,
+    paddingVertical: 10,
+    // fontWeight: 'bold',
     marginBottom: 20,
   },
   formInputContainer: {
     marginBottom: 20,
     backgroundColor: 'white',
+    borderRadius: 10,
   },
   formInput: {
     paddingVertical: 20,
     paddingHorizontal: 20,
+    fontSize: 18,
   },
   formButton: {
     marginTop: 20,
@@ -61,7 +64,7 @@ export const styles = StyleSheet.create({
   },
   formFooterText: {
     marginTop: 16,
-    fontSize: 20,
+    fontSize: 16,
   },
   formFooterLink: {
     fontSize: 16,
