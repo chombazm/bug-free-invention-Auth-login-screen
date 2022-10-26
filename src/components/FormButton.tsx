@@ -6,13 +6,17 @@ type Props = {
   loading?: boolean;
   label: string;
   onPress: () => void;
+  disabled?: boolean;
 };
-export const FormButton = ({ onPress, label, loading }: Props) => {
+export const FormButton = ({ onPress, label, loading, disabled }: Props) => {
   return (
     <Pressable
-      disabled={loading}
+      disabled={loading || disabled}
       // android_ripple={{ color: '#fff' }}
-      style={[styles.formButton, loading && styles.formButtonLoading]}
+      style={[
+        styles.formButton,
+        (loading || disabled) && styles.formButtonLoading,
+      ]}
       onPress={onPress}>
       <Text style={[styles.formButtonText]}>
         {loading ? 'Signing you in...' : label}
@@ -24,7 +28,7 @@ export const FormButton = ({ onPress, label, loading }: Props) => {
 const styles = StyleSheet.create({
   formButton: {
     marginTop: 10,
-    paddingVertical: 20,
+    paddingVertical: 15,
     paddingHorizontal: 20,
     borderRadius: 10,
     backgroundColor: colors.primary,

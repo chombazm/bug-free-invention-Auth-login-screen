@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Keyboard, StyleSheet, Text, View } from 'react-native';
 import { colors } from '../../assets/constants';
 import { FormButton } from './FormButton';
 import { TextInputBox } from './TextInputBox';
@@ -10,7 +10,6 @@ type Props = {
 };
 
 export const LoginFormComponent = ({ onSubmit, loading }: Props) => {
-  console.log(onSubmit, 'check onsubmit');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   // const [loading, setLoading] = React.useState(false);
@@ -20,6 +19,7 @@ export const LoginFormComponent = ({ onSubmit, loading }: Props) => {
     if (email && password) {
       // setLoading(true);
       onSubmit(email, password, true);
+      Keyboard.dismiss();
     } else {
       onSubmit(email, password, false);
     }
@@ -40,20 +40,27 @@ export const LoginFormComponent = ({ onSubmit, loading }: Props) => {
         placeholder="Enter Email"
         onChangeText={text => setEmail(text)}
         label="Email"
+        hasError={email.length > 0 && !email.includes('@')}
       />
 
       <TextInputBox
         placeholder="************"
         onChangeText={text => setPassword(text)}
         label="Password"
+        hasError={password.length > 0 && password.length < 6}
       />
 
-      <View style={styles.forgotPassword}>
+      <View>
         <Text style={styles.forgotPassword}>Recover password?</Text>
       </View>
 
       {/* add form submit button */}
-      <FormButton label="Sign In" onPress={handleSubmit} loading={loading} />
+      <FormButton
+        label="Sign In"
+        onPress={handleSubmit}
+        loading={loading}
+        // disabled={!email || !(password.length > 5)}
+      />
     </View>
   );
 };

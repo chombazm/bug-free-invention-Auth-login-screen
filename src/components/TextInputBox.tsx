@@ -6,19 +6,23 @@ type TextInputProps = {
   placeholder: string;
   value?: string;
   onChangeText: (text: string) => void;
+  hasError?: boolean;
 };
 export const TextInputBox = ({
   // label,
   placeholder,
   // value,
+  hasError,
   onChangeText,
 }: TextInputProps) => {
   return (
-    <View style={styles.formInputContainer}>
+    <View
+      style={[styles.formInputContainer, hasError && styles.formInputError]}>
       <TextInput
         style={styles.formInput}
         placeholder={placeholder}
         onChangeText={onChangeText}
+        autoCapitalize="none"
       />
     </View>
   );
@@ -26,14 +30,18 @@ export const TextInputBox = ({
 
 const styles = StyleSheet.create({
   formInputContainer: {
-    marginBottom: 10,
+    marginBottom: 25,
     backgroundColor: 'white',
     borderRadius: 10,
   },
   formInputLabel: {},
   formInput: {
-    paddingVertical: 20,
+    paddingVertical: 15,
     paddingHorizontal: 20,
-    fontSize: 18,
+    fontSize: 16,
+  },
+  formInputError: {
+    borderBottomWidth: 2,
+    borderBottomColor: 'red',
   },
 });
