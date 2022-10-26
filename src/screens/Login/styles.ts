@@ -25,10 +25,10 @@ export const styles = StyleSheet.create({
     fontSize: 14,
     paddingVertical: 10,
     // fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: 10,
   },
   formInputContainer: {
-    marginBottom: 20,
+    marginBottom: 10,
     backgroundColor: 'white',
     borderRadius: 10,
   },
@@ -38,7 +38,7 @@ export const styles = StyleSheet.create({
     fontSize: 18,
   },
   formButton: {
-    marginTop: 20,
+    marginTop: 10,
     paddingVertical: 20,
     paddingHorizontal: 20,
     borderRadius: 10,
@@ -63,7 +63,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   formFooterText: {
-    marginTop: 16,
+    marginTop: 10,
     fontSize: 16,
   },
   formFooterLink: {
@@ -72,13 +72,14 @@ export const styles = StyleSheet.create({
   },
 
   socialLoginContainer: {
-    width: '100%',
+    width: '80%',
+    alignSelf: 'center',
     // paddingHorizontal: 20,
     // paddingVertical: 40,
   },
   socialLoginHeader: {
     fontSize: 14,
-    marginBottom: 20,
+    marginBottom: 10,
   },
 
   socialLoginButtonContainer: {
@@ -87,15 +88,15 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
-    marginTop: 20,
   },
   socialLoginButton: {
     flex: 1,
-    maxWidth: 110,
-    paddingVertical: 20,
-    paddingHorizontal: 20,
+    maxWidth: 70,
+    paddingVertical: 10,
+    paddingHorizontal: 10,
     borderRadius: 10,
     backgroundColor: colors.lightBg,
+    elevation: 5,
     color: colors.lightText,
     display: 'flex',
     flexDirection: 'row',
