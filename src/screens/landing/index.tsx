@@ -45,7 +45,7 @@ export const LandingScreen = ({ navigation }: Props) => {
         </View>
 
         <View>
-          <Pressable onPress={() => {}}>
+          <Pressable onPress={() => navigation.navigate('Home')}>
             <Text style={{ color: colors.primary }}>Skip {'>>'}</Text>
           </Pressable>
         </View>

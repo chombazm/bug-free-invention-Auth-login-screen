@@ -38,7 +38,7 @@ const MainTab = createNativeStackNavigator<MainTabParamList>();
 function MainTabNavigator() {
   return (
     <MainTab.Navigator
-      initialRouteName="Landing"
+      initialRouteName="Home"
       screenOptions={{
         headerShown: false,
       }}>

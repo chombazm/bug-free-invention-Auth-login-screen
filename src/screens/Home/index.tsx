@@ -1,69 +1,33 @@
-import React, { useRef } from 'react';
-import {
-  Animated,
-  Text,
-  View,
-  StyleSheet,
-  Button,
-  SafeAreaView,
-} from 'react-native';
+import React from 'react';
+import { Animated, PanResponder, View } from 'react-native';
+import { styles } from './styles';
 
 export const HomeScreen = () => {
-  // fadeAnim will be used as the value for opacity. Initial Value: 0
-  const fadeAnim = useRef(new Animated.Value(0)).current;
+  const pan = React.useRef(new Animated.ValueXY()).current;
 
-  const fadeIn = () => {
-    Animated.timing(fadeAnim, {
-      toValue: 1,
-      duration: 5000,
-      useNativeDriver: false,
-    }).start();
-  };
-
-  const fadeOut = () => {
-    Animated.timing(fadeAnim, {
-      toValue: 0,
-      duration: 3000,
-      useNativeDriver: false,
-    }).start();
-  };
+  const panResponder = PanResponder.create({
+    onMoveShouldSetPanResponder: () => true,
+    onPanResponderMove: Animated.event([
+      null,
+      {
+        dx: pan.x,
+        dy: pan.y,
+      },
+    ]),
+    onPanResponderRelease: () => {
+      Animated.spring(pan, {
+        toValue: { x: 0, y: 0 },
+        useNativeDriver: false,
+      }).start();
+    },
+  });
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <Animated.View
-        style={[
-          styles.fadingContainer,
-          {
-            // Bind opacity to animated value
-            opacity: fadeAnim,
-          },
-        ]}>
-        <Text style={styles.fadingText}>Fading View!</Text>
-      </Animated.View>
-      <View style={styles.buttonRow}>
-        <Button title="Fade In View" onPress={fadeIn} />
-        <Button title="Fade Out View" onPress={fadeOut} />
-      </View>
-    </SafeAreaView>
+        {...panResponder.panHandlers}
+        style={[styles.box, pan.getLayout()]}
+      />
+    </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  fadingContainer: {
-    padding: 20,
-    backgroundColor: 'powderblue',
-  },
-  fadingText: {
-    fontSize: 28,
-  },
-  buttonRow: {
-    flexBasis: 100,
-    justifyContent: 'space-evenly',
-    marginVertical: 16,
-  },
-});
