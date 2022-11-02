@@ -2,11 +2,13 @@ import React from 'react';
 
 import { View, Text, StyleSheet } from 'react-native';
 
-export const SectionDivider = () => {
+export const SectionDivider = ({ message }: { message?: string }) => {
   return (
     <View style={styles.sectionDivider}>
       <View style={styles.sectionDividerLine} />
-      <Text style={styles.sectionDividerText}>Or continue with</Text>
+      <Text style={styles.sectionDividerText}>
+        {message || 'Or continue with'}
+      </Text>
       <View style={styles.sectionDividerLine} />
     </View>
   );

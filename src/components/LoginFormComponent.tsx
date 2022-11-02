@@ -1,6 +1,5 @@
 import React from 'react';
 import { Keyboard, StyleSheet, Text, View } from 'react-native';
-import { colors } from '../../assets/constants';
 import { FormButton } from './FormButton';
 import { TextInputBox } from './TextInputBox';
 
@@ -70,7 +69,7 @@ const styles = StyleSheet.create({
     width: '100%',
     paddingHorizontal: 20,
     paddingVertical: 40,
-    backgroundColor: colors.tertiary,
+    // backgroundColor: colors.tertiary,
   },
   formHeader: {
     fontSize: 24,

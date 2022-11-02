@@ -7,15 +7,24 @@ type Props = {
   label: string;
   onPress: () => void;
   disabled?: boolean;
+  type?: 'primary' | 'secondary';
 };
-export const FormButton = ({ onPress, label, loading, disabled }: Props) => {
+export const MyButton = ({
+  onPress,
+  label,
+  loading,
+  disabled,
+  type,
+}: Props) => {
   return (
     <Pressable
       disabled={loading || disabled}
       android_ripple={{ color: '#fff' }}
       style={[
-        styles.formButton,
-        (loading || disabled) && styles.formButtonLoading,
+        type === 'primary'
+          ? styles.formButtonPrimary
+          : styles.formButtonSecondary,
+        // (loading || disabled) && styles.formButtonLoading,
       ]}
       onPress={onPress}>
       <Text style={[styles.formButtonText]}>
@@ -26,13 +35,24 @@ export const FormButton = ({ onPress, label, loading, disabled }: Props) => {
 };
 
 const styles = StyleSheet.create({
-  formButton: {
+  formButtonPrimary: {
     marginTop: 10,
     paddingVertical: 15,
     paddingHorizontal: 20,
     borderRadius: 10,
-    backgroundColor: colors.primary,
+    backgroundColor: '#876efb',
     color: colors.lightText,
+  },
+  formButtonSecondary: {
+    marginTop: 10,
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    borderRadius: 10,
+    // backgroundColor: colors.lightText,
+    borderWidth: 1,
+    borderColor: '#876efb',
+    color: '#000',
+    marginBottom: 10,
   },
   formButtonLoading: {
     backgroundColor: colors.lightBg,

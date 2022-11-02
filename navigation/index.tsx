@@ -9,6 +9,7 @@ import { NotFoundScreen } from '../src/screens/notFound';
 
 import { RootStackParamList, MainTabParamList } from '../types';
 import { HomeScreen } from '../src/screens/Home';
+import { CheckoutScreen } from '../src/screens/Checkout';
 
 export const Navigation = () => {
   return (
@@ -38,7 +39,7 @@ const MainTab = createNativeStackNavigator<MainTabParamList>();
 function MainTabNavigator() {
   return (
     <MainTab.Navigator
-      initialRouteName="Home"
+      initialRouteName="Checkout"
       screenOptions={{
         headerShown: false,
       }}>
@@ -46,6 +47,7 @@ function MainTabNavigator() {
       <MainTab.Screen name="Login" component={LoginScreen} />
       <MainTab.Screen name="Register" component={RegisterScreen} />
       <MainTab.Screen name="Home" component={HomeScreen} />
+      <MainTab.Screen name="Checkout" component={CheckoutScreen} />
     </MainTab.Navigator>
   );
 }
