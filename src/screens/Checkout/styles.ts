@@ -41,7 +41,7 @@ export const styles = StyleSheet.create({
   socialLoginButtonContainer: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-evenly',
     alignItems: 'center',
     width: '100%',
   },
@@ -61,5 +61,17 @@ export const styles = StyleSheet.create({
   },
   socialLoginButtonIcon: {
     // marginRight: 10,
+  },
+  optionLogo: {
+    flex: 1,
+    // maxWidth: 70,
+
+    borderRadius: 10,
+    elevation: 5,
+    color: colors.lightText,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

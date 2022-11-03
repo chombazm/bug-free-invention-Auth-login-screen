@@ -1,7 +1,6 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
-import { View, Text, Pressable, SafeAreaView } from 'react-native';
-import { AppleIcon, Facebook, GoogleIcon } from '../../../assets/icons';
+import { View, Pressable, SafeAreaView, Image } from 'react-native';
 import { MainTabParamList } from '../../../types';
 // import { LoginFormComponent } from '../../components/LoginFormComponent';
 import { LanguageSelect } from '../../components/LanguageSelect';
@@ -11,21 +10,19 @@ import { CheckoutForm } from '../../components/CheckoutForm';
 
 type Props = NativeStackScreenProps<MainTabParamList>;
 
-const socialsToLogin = [
+const AirtelLogo = require('../../../assets/images/Airtel-logo.png');
+const MtnLogo = require('../../../assets/images/Mtn-logo.png');
+
+const paymentOptions = [
   {
-    icon: <Facebook />,
-    name: 'Facebook',
+    icon: AirtelLogo,
+    name: 'Airtel Money',
     url: 'https://www.facebook.com/',
   },
   {
-    icon: <GoogleIcon />,
-    name: 'Google',
+    icon: MtnLogo,
+    name: 'Mtn Mobile Money',
     url: 'https://www.google.com/',
-  },
-  {
-    icon: <AppleIcon />,
-    name: 'Apple',
-    url: 'https://www.apple.com/',
   },
 ];
 export const CheckoutScreen = ({ navigation }: Props) => {
@@ -53,20 +50,23 @@ export const CheckoutScreen = ({ navigation }: Props) => {
 
       <SectionDivider message="Or Pay with" />
 
-      {/* <View style={styles.socialLoginContainer}>
+      <View style={styles.socialLoginContainer}>
         <View style={styles.socialLoginButtonContainer}>
-          {socialsToLogin.map(social => (
+          {paymentOptions.map(option => (
             <Pressable
-              key={social.name}
-              style={styles.socialLoginButton}
+              key={option.name}
               onPress={() => {
-                console.warn(social.name);
+                console.warn(option.name);
               }}>
-              {social.icon}
+              <Image
+                resizeMode="contain"
+                source={option.icon}
+                style={{ width: 100 }}
+              />
             </Pressable>
           ))}
         </View>
-      </View> */}
+      </View>
 
       {/* <View style={styles.formFooter}>
         <Text style={styles.formFooterText}>Don't have an account? </Text>

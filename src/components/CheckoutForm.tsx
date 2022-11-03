@@ -1,6 +1,12 @@
 import React from 'react';
 import { Keyboard, StyleSheet, Text, View } from 'react-native';
 import { colors } from '../../assets/constants';
+import {
+  CalenderIcon,
+  CardCvvIcon,
+  CardIcon,
+  UserIcon,
+} from '../../assets/icons';
 // import { FormButton } from './FormButton';
 import { MyButton } from './MyButton';
 import { TextInputBox } from './TextInputBox';
@@ -12,22 +18,12 @@ type Props = {
 
 export const CheckoutForm = ({ onSubmit, loading }: Props) => {
   const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const [expireDate, setExpiredDate] = React.useState();
   // const [loading, setLoading] = React.useState(false);
 
   const handleSubmit = () => {
-    // check if email and password are not empty
-    if (email && password) {
-      // setLoading(true);
-      onSubmit(email, password, true);
-      Keyboard.dismiss();
-    } else {
-      onSubmit(email, password, false);
-    }
-
-    // setTimeout(() => {
-    //   setLoading(false);
-    // }, 2000);
+    Keyboard.dismiss();
+    onSubmit(email, expireDate, true);
   };
   return (
     <View style={styles.formContainer}>
@@ -39,39 +35,37 @@ export const CheckoutForm = ({ onSubmit, loading }: Props) => {
         placeholder="Card number"
         onChangeText={text => setEmail(text)}
         label="Email"
+        leftIcon={<CardIcon fill="#ccc" />}
+        keyboardType="numeric"
         // hasError={email.length > 0 && !email.includes('@')}
       />
       <TextInputBox
         placeholder="Full name"
         onChangeText={text => setEmail(text)}
         label="Email"
+        leftIcon={<UserIcon fill="#ccc" />}
         // hasError={email.length > 0 && !email.includes('@')}
       />
 
       <View style={styles.inputDualContainer}>
         <TextInputBox
           placeholder="CVV"
-          onChangeText={text => setPassword(text)}
+          onChangeText={text => setExpiredDate(text)}
           label="Password"
-          hasError={password.length > 0 && password.length < 6}
+          leftIcon={<CardCvvIcon fill="#ccc" />}
+          keyboardType="numeric"
         />
         <TextInputBox
           placeholder="MM/YY"
-          onChangeText={text => setPassword(text)}
-          label="Password"
+          onChangeText={text => setExpiredDate(text)}
+          value={expireDate}
+          label="Calender"
+          leftIcon={<CalenderIcon fill="#ccc" />}
           // hasError={password.length > 0 && password.length < 6}
+          keyboardType="numeric"
         />
       </View>
 
-      {/* add form submit button */}
-      <MyButton
-        label="Scan card"
-        onPress={handleSubmit}
-        loading={loading}
-        type="secondary"
-
-        // disabled={!email || !(password.length > 5)}
-      />
       <MyButton
         label="Add card"
         onPress={handleSubmit}
